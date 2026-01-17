@@ -62,7 +62,7 @@ export default function Gallery() {
   };
 
   return (
-    <section id="gallery" className="py-20 bg-[#f3eee7] dark:bg-[#1a140d]">
+    <section id="gallery" className="py-12 md:py-20 bg-[#f3eee7] dark:bg-[#1a140d]">
       <motion.div
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
         key={locale}
@@ -71,17 +71,17 @@ export default function Gallery() {
         transition={{ duration: 0.3 }}
       >
         <ScrollReveal>
-          <div className="flex flex-col items-center mb-12">
-            <span className="text-primary font-sans font-bold text-sm tracking-widest uppercase mb-3 block">{t.gallery.sectionTitle}</span>
-            <h2 className="text-4xl md:text-5xl font-bold text-text-main dark:text-white mb-8 text-center">{t.gallery.mainTitle}</h2>
+          <div className="flex flex-col items-center mb-8 md:mb-12">
+            <span className="text-primary font-sans font-bold text-xs sm:text-sm tracking-widest uppercase mb-2 md:mb-3 block">{t.gallery.sectionTitle}</span>
+            <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-text-main dark:text-white mb-6 md:mb-8 text-center">{t.gallery.mainTitle}</h2>
 
             {/* Filter Tabs */}
-            <div className="flex flex-wrap justify-center gap-2 p-1 bg-white dark:bg-[#2a2218] rounded-full border border-black/5 dark:border-white/5 shadow-sm">
+            <div className="flex flex-wrap justify-center gap-1 sm:gap-2 p-1 bg-white dark:bg-[#2a2218] rounded-full border border-black/5 dark:border-white/5 shadow-sm">
               {(['All', 'Restoration', 'Maintenance', 'Bow Work'] as Category[]).map((cat) => (
                 <motion.button
                   key={cat}
                   onClick={() => setFilter(cat)}
-                  className={`px-6 py-2 rounded-full text-sm font-bold transition-all ${filter === cat
+                  className={`px-3 sm:px-6 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-bold transition-all ${filter === cat
                     ? 'bg-primary text-white shadow-md'
                     : 'text-text-muted hover:text-primary hover:bg-primary/5'
                     }`}
@@ -97,7 +97,7 @@ export default function Gallery() {
 
         <motion.div
           layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8"
         >
           <AnimatePresence mode="popLayout">
             {filteredItems.map((item, index) => (
@@ -136,13 +136,13 @@ export default function Gallery() {
                       </div>
                     </div>
 
-                    <div className="p-6">
+                    <div className="p-4 sm:p-6">
                       <div className="flex justify-between items-start mb-2">
                         <span className="text-xs font-bold text-primary uppercase tracking-wider">{item.category}</span>
                         <span className="text-xs font-sans text-text-muted">{item.date}</span>
                       </div>
-                      <h3 className="text-xl font-bold text-text-main dark:text-white mb-2">{item.tag}</h3>
-                      <p className="text-sm font-sans text-text-muted line-clamp-2">{item.title}</p>
+                      <h3 className="text-lg sm:text-xl font-bold text-text-main dark:text-white mb-2">{item.tag}</h3>
+                      <p className="text-xs sm:text-sm font-sans text-text-muted line-clamp-2">{item.title}</p>
                     </div>
                   </div>
                 </TiltCard>
@@ -195,7 +195,7 @@ export default function Gallery() {
               </div>
 
               {/* Content Side */}
-              <div className="md:w-1/3 p-8 flex flex-col relative">
+              <div className="md:w-1/3 p-5 sm:p-8 flex flex-col relative">
                 <motion.button
                   onClick={() => setSelectedImage(null)}
                   className="absolute top-6 right-6 text-text-muted hover:text-text-main dark:hover:text-white transition-colors hidden md:block"

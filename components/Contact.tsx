@@ -8,7 +8,7 @@ export default function Contact() {
   const { t, locale } = useLanguage();
 
   return (
-    <section id="contact" className="py-20 bg-[#211a11] text-white relative overflow-hidden">
+    <section id="contact" className="py-12 md:py-20 bg-[#211a11] text-white relative overflow-hidden">
       {/* Abstract background pattern */}
       <div className="absolute top-0 right-0 w-1/2 h-full opacity-10 pointer-events-none">
         <svg className="w-full h-full" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
@@ -23,57 +23,57 @@ export default function Contact() {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.3 }}
       >
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-16">
           {/* Contact Info */}
           <div className="flex flex-col justify-center">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">{t.contact.title}</h2>
-            <p className="text-white/70 font-sans text-lg mb-12 max-w-md">{t.contact.description}</p>
+            <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6">{t.contact.title}</h2>
+            <p className="text-white/70 font-sans text-base sm:text-lg mb-8 md:mb-12 max-w-md">{t.contact.description}</p>
 
-            <div className="space-y-8">
-              <div className="flex items-start gap-4">
-                <div className="size-10 rounded-full bg-white/10 flex items-center justify-center text-primary shrink-0">
-                  <span className="material-symbols-outlined">location_on</span>
+            <div className="space-y-6 md:space-y-8">
+              <div className="flex items-start gap-3 sm:gap-4">
+                <div className="size-8 sm:size-10 rounded-full bg-white/10 flex items-center justify-center text-primary shrink-0">
+                  <span className="material-symbols-outlined text-lg sm:text-2xl">location_on</span>
                 </div>
                 <div>
-                  <h4 className="font-bold text-lg mb-1">{t.contact.mainStudio}</h4>
-                  <p className="text-white/70 font-sans">247 Craftsman Avenue<br/>Jersey City, NJ 07302</p>
-                  <p className="text-primary text-sm mt-1 font-sans">5 min from PATH Grove St</p>
+                  <h4 className="font-bold text-base sm:text-lg mb-1">{t.contact.mainStudio}</h4>
+                  <p className="text-white/70 font-sans text-sm sm:text-base">247 Craftsman Avenue<br/>Jersey City, NJ 07302</p>
+                  <p className="text-primary text-xs sm:text-sm mt-1 font-sans">5 min from PATH Grove St</p>
                 </div>
               </div>
-              <div className="flex items-start gap-4">
-                <div className="size-10 rounded-full bg-white/10 flex items-center justify-center text-primary shrink-0">
-                  <span className="material-symbols-outlined">apartment</span>
+              <div className="flex items-start gap-3 sm:gap-4">
+                <div className="size-8 sm:size-10 rounded-full bg-white/10 flex items-center justify-center text-primary shrink-0">
+                  <span className="material-symbols-outlined text-lg sm:text-2xl">apartment</span>
                 </div>
                 <div>
-                  <h4 className="font-bold text-lg mb-1">{t.contact.nycShowroom}</h4>
-                  <p className="text-white/70 font-sans">128 Harmony Lane, Suite 4B<br/>New York, NY 10012</p>
-                  <p className="text-primary text-sm mt-1 font-sans">{t.contact.byAppointment}</p>
+                  <h4 className="font-bold text-base sm:text-lg mb-1">{t.contact.nycShowroom}</h4>
+                  <p className="text-white/70 font-sans text-sm sm:text-base">128 Harmony Lane, Suite 4B<br/>New York, NY 10012</p>
+                  <p className="text-primary text-xs sm:text-sm mt-1 font-sans">{t.contact.byAppointment}</p>
                 </div>
               </div>
-              <div className="flex items-start gap-4">
-                <div className="size-10 rounded-full bg-white/10 flex items-center justify-center text-primary shrink-0">
-                  <span className="material-symbols-outlined">mail</span>
+              <div className="flex items-start gap-3 sm:gap-4">
+                <div className="size-8 sm:size-10 rounded-full bg-white/10 flex items-center justify-center text-primary shrink-0">
+                  <span className="material-symbols-outlined text-lg sm:text-2xl">mail</span>
                 </div>
                 <div>
-                  <h4 className="font-bold text-lg mb-1">{t.contact.emailUs}</h4>
-                  <p className="text-white/70 font-sans">info@luthierstudio.com</p>
+                  <h4 className="font-bold text-base sm:text-lg mb-1">{t.contact.emailUs}</h4>
+                  <p className="text-white/70 font-sans text-sm sm:text-base">info@luthierstudio.com</p>
                 </div>
               </div>
-              <div className="flex items-start gap-4">
-                <div className="size-10 rounded-full bg-white/10 flex items-center justify-center text-primary shrink-0">
-                  <span className="material-symbols-outlined">call</span>
+              <div className="flex items-start gap-3 sm:gap-4">
+                <div className="size-8 sm:size-10 rounded-full bg-white/10 flex items-center justify-center text-primary shrink-0">
+                  <span className="material-symbols-outlined text-lg sm:text-2xl">call</span>
                 </div>
                 <div>
-                  <h4 className="font-bold text-lg mb-1">{t.contact.callUs}</h4>
-                  <p className="text-white/70 font-sans">+1 (201) 555-0123</p>
+                  <h4 className="font-bold text-base sm:text-lg mb-1">{t.contact.callUs}</h4>
+                  <p className="text-white/70 font-sans text-sm sm:text-base">+1 (201) 555-0123</p>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Form */}
-          <div className="bg-white rounded-2xl p-8 text-text-main shadow-2xl">
-            <form className="flex flex-col gap-6" onSubmit={(e) => e.preventDefault()}>
+          <div className="bg-white rounded-2xl p-5 sm:p-8 text-text-main shadow-2xl">
+            <form className="flex flex-col gap-4 sm:gap-6" onSubmit={(e) => e.preventDefault()}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="flex flex-col gap-2">
                   <label className="text-sm font-bold uppercase tracking-wide text-text-muted">{t.contact.form.firstName}</label>

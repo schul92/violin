@@ -75,7 +75,7 @@ export default function Hero() {
     <>
       <header
         ref={containerRef}
-        className="relative w-full h-[85vh] min-h-[600px] flex flex-col justify-end bg-[#211a11] overflow-hidden group select-none touch-none"
+        className="relative w-full h-[70vh] md:h-[85vh] min-h-[500px] md:min-h-[600px] flex flex-col justify-end bg-[#211a11] overflow-hidden group select-none md:touch-none"
         onMouseDown={onMouseDown}
         onMouseMove={onMouseMove}
         onTouchStart={onMouseDown}
@@ -92,9 +92,9 @@ export default function Hero() {
             }}
           />
 
-          {/* 'Before' Image (Overlay with Clip) - Damaged/aged violin */}
+          {/* 'Before' Image (Overlay with Clip) - Hidden on mobile */}
           <div
-            className={`absolute inset-0 w-full h-full bg-cover bg-center border-r border-white/20 ${!isDragging && !hasAnimated ? 'transition-[clip-path] duration-1000 ease-in-out' : ''}`}
+            className={`hidden md:block absolute inset-0 w-full h-full bg-cover bg-center border-r border-white/20 ${!isDragging && !hasAnimated ? 'transition-[clip-path] duration-1000 ease-in-out' : ''}`}
             style={{
               backgroundImage: "linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('https://images.pexels.com/photos/34221/violin-musical-instrument-music-sound.jpg?auto=compress&cs=tinysrgb&w=1920')",
               filter: "sepia(0.8) brightness(0.7) contrast(1.2)",
@@ -103,9 +103,9 @@ export default function Hero() {
           >
           </div>
 
-          {/* Animated Drag Handle Line */}
+          {/* Animated Drag Handle Line - Hidden on mobile */}
           <motion.div
-            className={`absolute top-0 bottom-0 w-1 z-10 flex flex-col justify-center items-center pointer-events-auto cursor-ew-resize ${!isDragging && !hasAnimated ? 'transition-[left] duration-1000 ease-in-out' : ''}`}
+            className={`hidden md:flex absolute top-0 bottom-0 w-1 z-10 flex-col justify-center items-center pointer-events-auto cursor-ew-resize ${!isDragging && !hasAnimated ? 'transition-[left] duration-1000 ease-in-out' : ''}`}
             style={{ left: `${sliderPosition}%` }}
             initial={false}
           >
@@ -155,10 +155,10 @@ export default function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* Animated SVG Text - BEFORE */}
+          {/* Animated SVG Text - BEFORE - Hidden on mobile */}
           <motion.div
             key={`before-${locale}`}
-            className={`absolute top-[20%] left-[25%] -translate-x-1/2 -translate-y-1/2 pointer-events-none z-10 transition-opacity duration-500 ${sliderPosition > 20 ? 'opacity-100' : 'opacity-0'}`}
+            className={`hidden md:block absolute top-[20%] left-[25%] -translate-x-1/2 -translate-y-1/2 pointer-events-none z-10 transition-opacity duration-500 ${sliderPosition > 20 ? 'opacity-100' : 'opacity-0'}`}
           >
             <svg width="280" height="80" viewBox="0 0 280 80" className="overflow-visible">
               <defs>
@@ -197,10 +197,10 @@ export default function Hero() {
             </svg>
           </motion.div>
 
-          {/* Animated SVG Text - AFTER */}
+          {/* Animated SVG Text - AFTER - Hidden on mobile */}
           <motion.div
             key={`after-${locale}`}
-            className="absolute top-[20%] left-[75%] -translate-x-1/2 -translate-y-1/2 pointer-events-none z-10"
+            className="hidden md:block absolute top-[20%] left-[75%] -translate-x-1/2 -translate-y-1/2 pointer-events-none z-10"
           >
             <svg width="280" height="80" viewBox="0 0 280 80" className="overflow-visible">
               <defs>
@@ -257,7 +257,7 @@ export default function Hero() {
               </div>
             </ScrollReveal>
 
-            <h1 className="text-white text-5xl md:text-7xl font-bold leading-tight tracking-tight mb-6 drop-shadow-lg">
+            <h1 className="text-white text-3xl sm:text-5xl md:text-7xl font-bold leading-tight tracking-tight mb-4 md:mb-6 drop-shadow-lg">
               {locale === 'ko' ? (
                 <>
                   <TextReveal text={t.hero.title1} staggerDelay={0.05} key={`t1-${locale}`} />
@@ -323,18 +323,18 @@ export default function Hero() {
 
       {/* Logo Strip */}
       <ScrollReveal direction="up" delay={0.2}>
-        <div className="w-full bg-white dark:bg-[#1a140d] border-b border-[#f3eee7] dark:border-white/5 py-8">
-          <div className="max-w-7xl mx-auto px-4 flex flex-wrap justify-center gap-8 md:gap-16 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+        <div className="w-full bg-white dark:bg-[#1a140d] border-b border-[#f3eee7] dark:border-white/5 py-6 md:py-8">
+          <div className="max-w-7xl mx-auto px-4 flex flex-wrap justify-center gap-4 sm:gap-8 md:gap-16 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
             {['piano', 'queue_music', 'music_note', 'library_music'].map((icon, i) => (
               <motion.div
                 key={icon}
-                className="h-8 flex items-center gap-2 font-bold text-xl text-text-main dark:text-white font-sans"
+                className="h-8 flex items-center gap-2 font-bold text-sm sm:text-xl text-text-main dark:text-white font-sans"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 + i * 0.1 }}
               >
-                <span className="material-symbols-outlined">{icon}</span>
-                {['Philharmonic', 'Conservatory', 'Royal Opera', 'Symphony'][i]}
+                <span className="material-symbols-outlined text-lg sm:text-2xl">{icon}</span>
+                <span className="hidden sm:inline">{['Philharmonic', 'Conservatory', 'Royal Opera', 'Symphony'][i]}</span>
               </motion.div>
             ))}
           </div>

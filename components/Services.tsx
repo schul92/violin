@@ -49,7 +49,7 @@ export default function Services() {
   ];
 
   return (
-    <section id="services" className="py-20 md:py-32 bg-background-light dark:bg-background-dark relative">
+    <section id="services" className="py-12 md:py-32 bg-background-light dark:bg-background-dark relative">
       <motion.div
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
         key={locale}
@@ -57,10 +57,10 @@ export default function Services() {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.3 }}
       >
-        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 md:mb-16 gap-4 md:gap-6">
           <div className="max-w-xl">
-            <h2 className="text-primary font-sans font-bold text-sm tracking-widest uppercase mb-3">{t.services.sectionTitle}</h2>
-            <h3 className="text-4xl md:text-5xl font-bold text-text-main dark:text-white leading-tight">{t.services.mainTitle}</h3>
+            <h2 className="text-primary font-sans font-bold text-xs sm:text-sm tracking-widest uppercase mb-2 md:mb-3">{t.services.sectionTitle}</h2>
+            <h3 className="text-2xl sm:text-4xl md:text-5xl font-bold text-text-main dark:text-white leading-tight">{t.services.mainTitle}</h3>
           </div>
           <div className="hidden md:block text-text-muted text-sm font-sans">
             {t.services.selectService}
@@ -113,7 +113,7 @@ export default function Services() {
           </div>
 
           {/* Dynamic Content Panel */}
-          <div className="lg:w-2/3 bg-white dark:bg-[#2a2218] rounded-2xl p-8 md:p-12 border border-[#f3eee7] dark:border-white/5 shadow-2xl relative overflow-hidden flex flex-col justify-between min-h-[500px]">
+          <div className="lg:w-2/3 bg-white dark:bg-[#2a2218] rounded-2xl p-5 sm:p-8 md:p-12 border border-[#f3eee7] dark:border-white/5 shadow-2xl relative overflow-hidden flex flex-col justify-between min-h-[400px] md:min-h-[500px]">
             {/* Background Decor */}
             <div className="absolute top-0 right-0 p-12 opacity-5 pointer-events-none">
               <span className="material-symbols-outlined text-[300px] text-text-main dark:text-white">
@@ -127,11 +127,11 @@ export default function Services() {
                  <span className="text-sm font-bold uppercase tracking-widest">{t.services.spotlight}</span>
               </div>
 
-              <h3 className="text-3xl md:text-4xl font-bold text-text-main dark:text-white mb-6">
+              <h3 className="text-xl sm:text-2xl md:text-4xl font-bold text-text-main dark:text-white mb-4 md:mb-6 leading-snug">
                 {services[activeService].desc}
               </h3>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 mt-6 md:mt-12">
                 <div>
                   <h5 className="font-bold text-text-main dark:text-white mb-4 flex items-center gap-2">
                     <span className="material-symbols-outlined text-primary">construction</span>
@@ -158,12 +158,12 @@ export default function Services() {
               </div>
             </div>
 
-            <div className="mt-8 pt-8 border-t border-black/5 dark:border-white/5 flex justify-between items-center relative z-10">
+            <div className="mt-6 md:mt-8 pt-6 md:pt-8 border-t border-black/5 dark:border-white/5 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 relative z-10">
                <div className="text-xs font-sans text-text-muted">
                  Service Code: {services[activeService].id.toUpperCase()}-0{activeService + 1}
                </div>
-               <button className="text-primary font-bold text-sm hover:underline flex items-center gap-1">
-                 {t.services.learnMore} {services[activeService].title} <span className="material-symbols-outlined text-sm">open_in_new</span>
+               <button className="text-primary font-bold text-xs sm:text-sm hover:underline flex items-center gap-1">
+                 {t.services.learnMore} <span className="hidden sm:inline">{services[activeService].title}</span> <span className="material-symbols-outlined text-sm">open_in_new</span>
                </button>
             </div>
           </div>
