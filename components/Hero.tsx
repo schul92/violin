@@ -92,9 +92,9 @@ export default function Hero() {
             }}
           />
 
-          {/* 'Before' Image (Overlay with Clip) - Hidden on mobile */}
+          {/* 'Before' Image (Overlay with Clip) */}
           <div
-            className={`hidden md:block absolute inset-0 w-full h-full bg-cover bg-center border-r border-white/20 ${!isDragging && !hasAnimated ? 'transition-[clip-path] duration-1000 ease-in-out' : ''}`}
+            className={`absolute inset-0 w-full h-full bg-cover bg-center border-r border-white/20 ${!isDragging && !hasAnimated ? 'transition-[clip-path] duration-1000 ease-in-out' : ''}`}
             style={{
               backgroundImage: "linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('https://images.pexels.com/photos/34221/violin-musical-instrument-music-sound.jpg?auto=compress&cs=tinysrgb&w=1920')",
               filter: "sepia(0.8) brightness(0.7) contrast(1.2)",
@@ -103,9 +103,9 @@ export default function Hero() {
           >
           </div>
 
-          {/* Animated Drag Handle Line - Hidden on mobile */}
+          {/* Animated Drag Handle Line - visible on all, interactive only on desktop */}
           <motion.div
-            className={`hidden md:flex absolute top-0 bottom-0 w-1 z-10 flex-col justify-center items-center pointer-events-auto cursor-ew-resize ${!isDragging && !hasAnimated ? 'transition-[left] duration-1000 ease-in-out' : ''}`}
+            className={`flex absolute top-0 bottom-0 w-1 z-10 flex-col justify-center items-center pointer-events-none md:pointer-events-auto md:cursor-ew-resize ${!isDragging && !hasAnimated ? 'transition-[left] duration-1000 ease-in-out' : ''}`}
             style={{ left: `${sliderPosition}%` }}
             initial={false}
           >
@@ -121,7 +121,7 @@ export default function Hero() {
 
             {/* Handle button */}
             <motion.div
-              className="relative size-14 rounded-full flex items-center justify-center bg-primary border-4 border-white/30"
+              className="relative size-10 md:size-14 rounded-full flex items-center justify-center bg-primary border-2 md:border-4 border-white/30"
               style={{
                 boxShadow: '0 0 30px rgba(230,144,25,0.6), 0 4px 20px rgba(0,0,0,0.3)'
               }}
@@ -134,18 +134,18 @@ export default function Hero() {
               }}
             >
               <motion.div
-                className="flex items-center gap-1 text-[#1b150e]"
+                className="flex items-center gap-0.5 md:gap-1 text-[#1b150e]"
                 animate={{ x: isDragging ? [-2, 2, -2] : 0 }}
                 transition={{ duration: 0.3, repeat: isDragging ? Infinity : 0 }}
               >
-                <span className="material-symbols-outlined text-sm">chevron_left</span>
-                <span className="material-symbols-outlined text-sm">chevron_right</span>
+                <span className="material-symbols-outlined text-xs md:text-sm">chevron_left</span>
+                <span className="material-symbols-outlined text-xs md:text-sm">chevron_right</span>
               </motion.div>
             </motion.div>
 
-            {/* Instruction tooltip */}
+            {/* Instruction tooltip - hidden on mobile */}
             <motion.div
-              className="absolute -bottom-16 whitespace-nowrap bg-black/70 backdrop-blur-sm text-white text-xs px-3 py-1.5 rounded-full transition-all duration-300"
+              className="hidden md:block absolute -bottom-16 whitespace-nowrap bg-black/70 backdrop-blur-sm text-white text-xs px-3 py-1.5 rounded-full transition-all duration-300"
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: isDragging ? 0 : 1, y: isDragging ? -10 : 0 }}
               transition={{ delay: 1 }}
