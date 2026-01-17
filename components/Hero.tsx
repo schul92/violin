@@ -166,7 +166,7 @@ export default function Hero() {
             key={`before-${locale}`}
             className={`absolute top-[15%] md:top-[20%] left-[25%] md:left-[25%] -translate-x-1/2 -translate-y-1/2 pointer-events-none z-10 transition-opacity duration-500 ${sliderPosition > 20 ? 'opacity-100' : 'opacity-0'}`}
           >
-            <svg width="280" height="80" viewBox="0 0 280 80" className="overflow-visible w-[140px] h-[40px] md:w-[280px] md:h-[80px]">
+            <svg width="280" height="80" viewBox="0 0 280 80" className="w-[140px] h-[40px] md:w-[280px] md:h-[80px]">
               <defs>
                 <linearGradient id="beforeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
                   <stop offset="0%" stopColor="rgba(255,255,255,0.6)" />
@@ -208,7 +208,7 @@ export default function Hero() {
             key={`after-${locale}`}
             className="absolute top-[15%] md:top-[20%] left-[75%] md:left-[75%] -translate-x-1/2 -translate-y-1/2 pointer-events-none z-10"
           >
-            <svg width="280" height="80" viewBox="0 0 280 80" className="overflow-visible w-[140px] h-[40px] md:w-[280px] md:h-[80px]">
+            <svg width="280" height="80" viewBox="0 0 280 80" className="w-[140px] h-[40px] md:w-[280px] md:h-[80px]">
               <defs>
                 <linearGradient id="afterGradient" x1="0%" y1="0%" x2="100%" y2="0%">
                   <stop offset="0%" stopColor="rgba(230,144,25,0.8)" />
