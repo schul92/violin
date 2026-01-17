@@ -10,7 +10,16 @@ export default function Hero() {
   const [sliderPosition, setSliderPosition] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
   const [hasAnimated, setHasAnimated] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  // Detect mobile on mount
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   // Initial animation: gentle slide to demonstrate interactivity
   useEffect(() => {
@@ -75,12 +84,9 @@ export default function Hero() {
     <>
       <header
         ref={containerRef}
-        className="relative w-full h-[70vh] md:h-[85vh] min-h-[500px] md:min-h-[600px] flex flex-col justify-end bg-[#211a11] overflow-hidden group select-none md:touch-none"
-        onMouseDown={onMouseDown}
-        onMouseMove={onMouseMove}
-        onTouchStart={onMouseDown}
-        onTouchMove={onTouchMove}
-        onTouchEnd={onMouseUp}
+        className="relative w-full h-[70vh] md:h-[85vh] min-h-[500px] md:min-h-[600px] flex flex-col justify-end bg-[#211a11] overflow-hidden group select-none"
+        onMouseDown={!isMobile ? onMouseDown : undefined}
+        onMouseMove={!isMobile ? onMouseMove : undefined}
       >
         {/* Comparison Slider Implementation */}
         <div className="absolute inset-0 w-full h-full pointer-events-none">
@@ -105,7 +111,7 @@ export default function Hero() {
 
           {/* Animated Drag Handle Line - visible on all, interactive only on desktop */}
           <motion.div
-            className={`flex absolute top-0 bottom-0 w-1 z-10 flex-col justify-center items-center pointer-events-none md:pointer-events-auto md:cursor-ew-resize ${!isDragging && !hasAnimated ? 'transition-[left] duration-1000 ease-in-out' : ''}`}
+            className={`flex absolute top-0 bottom-0 w-1 z-10 flex-col justify-center items-center ${isMobile ? 'pointer-events-none' : 'pointer-events-auto cursor-ew-resize'} ${!isDragging && !hasAnimated ? 'transition-[left] duration-1000 ease-in-out' : ''}`}
             style={{ left: `${sliderPosition}%` }}
             initial={false}
           >
