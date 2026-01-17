@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <!-- Violin body -->
+  <path d="M50 15 C35 20, 25 35, 25 50 C25 55, 28 58, 30 60 C28 62, 25 65, 25 70 C25 85, 35 95, 50 95 C65 95, 75 85, 75 70 C75 65, 72 62, 70 60 C72 58, 75 55, 75 50 C75 35, 65 20, 50 15" fill="#e69019" stroke="#1b150e" stroke-width="2"/>
+
+  <!-- F-holes -->
+  <path d="M38 40 C36 45, 38 55, 40 60 M40 48 L36 50" fill="none" stroke="#1b150e" stroke-width="2" stroke-linecap="round"/>
+  <path d="M62 40 C64 45, 62 55, 60 60 M60 48 L64 50" fill="none" stroke="#1b150e" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Bridge -->
+  <rect x="42" y="52" width="16" height="4" rx="1" fill="#1b150e"/>
+
+  <!-- Tailpiece -->
+  <path d="M45 70 L55 70 L52 85 L48 85 Z" fill="#1b150e"/>
+
+  <!-- Strings -->
+  <line x1="44" y1="20" x2="44" y2="70" stroke="#1b150e" stroke-width="1"/>
+  <line x1="48" y1="20" x2="48" y2="70" stroke="#1b150e" stroke-width="1"/>
+  <line x1="52" y1="20" x2="52" y2="70" stroke="#1b150e" stroke-width="1"/>
+  <line x1="56" y1="20" x2="56" y2="70" stroke="#1b150e" stroke-width="1"/>
+
+  <!-- Neck -->
+  <rect x="46" y="5" width="8" height="15" rx="2" fill="#e69019" stroke="#1b150e" stroke-width="2"/>
+
+  <!-- Scroll -->
+  <path d="M50 5 C45 5, 42 3, 42 0 C42 -2, 44 -3, 46 -2 C47 -1, 48 0, 50 0" fill="none" stroke="#1b150e" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="43" cy="0" r="3" fill="#e69019" stroke="#1b150e" stroke-width="1.5"/>
+</svg>

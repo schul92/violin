@@ -1,28 +1,71 @@
-import React from 'react';
+'use client';
 
-const Footer: React.FC = () => {
+import { motion } from 'framer-motion';
+import { useLanguage } from '@/lib/LanguageContext';
+
+export default function Footer() {
+  const { t, locale } = useLanguage();
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="bg-background-light dark:bg-[#1a140d] border-t border-[#f3eee7] dark:border-white/5 py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="flex items-center gap-2">
-            <span className="material-symbols-outlined text-primary text-2xl">music_note</span>
-            <span className="text-lg font-bold text-text-main dark:text-white">Luthier Studio</span>
+    <footer className="bg-background-light dark:bg-[#1a140d] border-t border-[#f3eee7] dark:border-white/5 py-16">
+      <motion.div
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+        key={locale}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.3 }}
+      >
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+          {/* Brand */}
+          <div className="md:col-span-2">
+            <div className="flex items-center gap-2 mb-4">
+              <span className="material-symbols-outlined text-primary text-2xl">music_note</span>
+              <span className="text-lg font-bold text-text-main dark:text-white">Luthier Studio</span>
+            </div>
+            <p className="text-text-muted font-sans text-sm max-w-md mb-4">
+              {t.footer.description}
+            </p>
+            <p className="text-text-muted font-sans text-sm">
+              <span className="text-primary font-semibold">{t.footer.serving}</span> {t.footer.areas}
+            </p>
           </div>
-          
+
+          {/* Services */}
+          <div>
+            <h4 className="font-bold text-text-main dark:text-white mb-4">{t.footer.servicesTitle}</h4>
+            <ul className="space-y-2 text-sm font-sans text-text-muted">
+              <li><a href="#services" className="hover:text-primary transition-colors">{t.services.items.repair.title}</a></li>
+              <li><a href="#services" className="hover:text-primary transition-colors">{t.services.items.varnish.title}</a></li>
+              <li><a href="#services" className="hover:text-primary transition-colors">{t.services.items.sound.title}</a></li>
+              <li><a href="#services" className="hover:text-primary transition-colors">{t.services.items.bow.title}</a></li>
+            </ul>
+          </div>
+
+          {/* Contact */}
+          <div>
+            <h4 className="font-bold text-text-main dark:text-white mb-4">{t.footer.contactTitle}</h4>
+            <ul className="space-y-2 text-sm font-sans text-text-muted">
+              <li>247 Craftsman Avenue</li>
+              <li>Jersey City, NJ 07302</li>
+              <li className="pt-2">+1 (201) 555-0123</li>
+              <li>info@luthierstudio.com</li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="border-t border-[#f3eee7] dark:border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="flex gap-8 text-sm font-sans text-text-muted">
-            <a href="#" className="hover:text-primary transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-primary transition-colors">Terms of Service</a>
-            <a href="#" className="hover:text-primary transition-colors">Sitemap</a>
+            <a href="#" className="hover:text-primary transition-colors">{t.footer.privacy}</a>
+            <a href="#" className="hover:text-primary transition-colors">{t.footer.terms}</a>
+            <a href="#" className="hover:text-primary transition-colors">{t.footer.sitemap}</a>
           </div>
 
           <div className="text-sm font-sans text-text-muted">
-            &copy; 2024 Luthier Studio. All rights reserved.
+            &copy; {currentYear} Luthier Studio. {t.footer.rights}
           </div>
         </div>
-      </div>
+      </motion.div>
     </footer>
   );
-};
-
-export default Footer;
+}

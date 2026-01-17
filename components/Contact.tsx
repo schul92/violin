@@ -1,6 +1,12 @@
-import React from 'react';
+'use client';
 
-const Contact: React.FC = () => {
+import { motion } from 'framer-motion';
+import { ScrollReveal, MagneticButton } from './animations';
+import { useLanguage } from '@/lib/LanguageContext';
+
+export default function Contact() {
+  const { t, locale } = useLanguage();
+
   return (
     <section id="contact" className="py-20 bg-[#211a11] text-white relative overflow-hidden">
       {/* Abstract background pattern */}
@@ -10,21 +16,38 @@ const Contact: React.FC = () => {
         </svg>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <motion.div
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10"
+        key={locale}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.3 }}
+      >
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           {/* Contact Info */}
           <div className="flex flex-col justify-center">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">Begin the Journey</h2>
-            <p className="text-white/70 font-sans text-lg mb-12 max-w-md">Your instrument has a story. Let us help you write the next chapter. Visit our studio or send us an inquiry.</p>
-            
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">{t.contact.title}</h2>
+            <p className="text-white/70 font-sans text-lg mb-12 max-w-md">{t.contact.description}</p>
+
             <div className="space-y-8">
               <div className="flex items-start gap-4">
                 <div className="size-10 rounded-full bg-white/10 flex items-center justify-center text-primary shrink-0">
                   <span className="material-symbols-outlined">location_on</span>
                 </div>
                 <div>
-                  <h4 className="font-bold text-lg mb-1">Our Studio</h4>
+                  <h4 className="font-bold text-lg mb-1">{t.contact.mainStudio}</h4>
+                  <p className="text-white/70 font-sans">247 Craftsman Avenue<br/>Jersey City, NJ 07302</p>
+                  <p className="text-primary text-sm mt-1 font-sans">5 min from PATH Grove St</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-4">
+                <div className="size-10 rounded-full bg-white/10 flex items-center justify-center text-primary shrink-0">
+                  <span className="material-symbols-outlined">apartment</span>
+                </div>
+                <div>
+                  <h4 className="font-bold text-lg mb-1">{t.contact.nycShowroom}</h4>
                   <p className="text-white/70 font-sans">128 Harmony Lane, Suite 4B<br/>New York, NY 10012</p>
+                  <p className="text-primary text-sm mt-1 font-sans">{t.contact.byAppointment}</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
@@ -32,8 +55,8 @@ const Contact: React.FC = () => {
                   <span className="material-symbols-outlined">mail</span>
                 </div>
                 <div>
-                  <h4 className="font-bold text-lg mb-1">Email Us</h4>
-                  <p className="text-white/70 font-sans">restoration@luthierstudio.com</p>
+                  <h4 className="font-bold text-lg mb-1">{t.contact.emailUs}</h4>
+                  <p className="text-white/70 font-sans">info@luthierstudio.com</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
@@ -41,8 +64,8 @@ const Contact: React.FC = () => {
                   <span className="material-symbols-outlined">call</span>
                 </div>
                 <div>
-                  <h4 className="font-bold text-lg mb-1">Call Us</h4>
-                  <p className="text-white/70 font-sans">+1 (555) 123-4567</p>
+                  <h4 className="font-bold text-lg mb-1">{t.contact.callUs}</h4>
+                  <p className="text-white/70 font-sans">+1 (201) 555-0123</p>
                 </div>
               </div>
             </div>
@@ -53,45 +76,43 @@ const Contact: React.FC = () => {
             <form className="flex flex-col gap-6" onSubmit={(e) => e.preventDefault()}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="flex flex-col gap-2">
-                  <label className="text-sm font-bold uppercase tracking-wide text-text-muted">First Name</label>
+                  <label className="text-sm font-bold uppercase tracking-wide text-text-muted">{t.contact.form.firstName}</label>
                   <input type="text" placeholder="Jane" className="w-full bg-[#f8f7f6] border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary font-sans transition-all" />
                 </div>
                 <div className="flex flex-col gap-2">
-                  <label className="text-sm font-bold uppercase tracking-wide text-text-muted">Last Name</label>
+                  <label className="text-sm font-bold uppercase tracking-wide text-text-muted">{t.contact.form.lastName}</label>
                   <input type="text" placeholder="Doe" className="w-full bg-[#f8f7f6] border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary font-sans transition-all" />
                 </div>
               </div>
-              
+
               <div className="flex flex-col gap-2">
-                <label className="text-sm font-bold uppercase tracking-wide text-text-muted">Email Address</label>
+                <label className="text-sm font-bold uppercase tracking-wide text-text-muted">{t.contact.form.email}</label>
                 <input type="email" placeholder="jane@example.com" className="w-full bg-[#f8f7f6] border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary font-sans transition-all" />
               </div>
 
               <div className="flex flex-col gap-2">
-                <label className="text-sm font-bold uppercase tracking-wide text-text-muted">Instrument Type</label>
+                <label className="text-sm font-bold uppercase tracking-wide text-text-muted">{t.contact.form.instrumentType}</label>
                 <select className="w-full bg-[#f8f7f6] border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary font-sans transition-all appearance-none cursor-pointer">
-                  <option>Violin</option>
-                  <option>Viola</option>
-                  <option>Cello</option>
-                  <option>Double Bass</option>
-                  <option>Bow Only</option>
+                  <option>{t.contact.services.restoration}</option>
+                  <option>{t.contact.services.repair}</option>
+                  <option>{t.contact.services.soundAdjustment}</option>
+                  <option>{t.contact.services.bowRehairing}</option>
+                  <option>{t.contact.services.varnish}</option>
                 </select>
               </div>
 
               <div className="flex flex-col gap-2">
-                <label className="text-sm font-bold uppercase tracking-wide text-text-muted">Message</label>
-                <textarea rows={4} placeholder="Tell us about your instrument's condition..." className="w-full bg-[#f8f7f6] border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary font-sans transition-all resize-none"></textarea>
+                <label className="text-sm font-bold uppercase tracking-wide text-text-muted">{t.contact.form.message}</label>
+                <textarea rows={4} placeholder={t.contact.form.messagePlaceholder} className="w-full bg-[#f8f7f6] border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary font-sans transition-all resize-none"></textarea>
               </div>
 
               <button type="submit" className="mt-2 w-full bg-primary hover:bg-primary/90 text-white text-base font-bold py-4 rounded-lg transition-colors shadow-lg hover:shadow-glow">
-                Request Consultation
+                {t.contact.form.submit}
               </button>
             </form>
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
-};
-
-export default Contact;
+}
